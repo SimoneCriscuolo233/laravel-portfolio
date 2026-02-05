@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ config('app.name', 'Laravel') }} - Admin</title>
+    @vite(['resources/js/app.js'])
+</head>
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">Torna al Sito</a>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.admin-dashboard') }}">Dashboard</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="py-4">
+            @yield('content')
+        </main>
+    </div>
+</body>
+</html>
