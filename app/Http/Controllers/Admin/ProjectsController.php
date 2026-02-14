@@ -1,21 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Models\Post;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class ProjectsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-     $posts= Post::all();
-       return view("posts.index", compact("posts"));
+        $projects = Project::all();
+        return view('projects.index', compact('projects'));
     }
 
-    /**
+    public function show(Project $project)
+    {
+        return view('projects.show', compact('project'));
+    }
+ /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -34,11 +37,6 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
-    {
-         //$post= Post::find($id);
-       return view("posts.show", compact("post"));
-    }
 
     /**
      * Show the form for editing the specified resource.

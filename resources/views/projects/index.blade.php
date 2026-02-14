@@ -1,4 +1,4 @@
-@extends("layouts.posts")
+@extends("layouts.projects")
 @section("title", "Tutti i post")
 @section("content")
 <table>
@@ -11,11 +11,12 @@
   </thead>
   <tbody>
     
-    @foreach($posts as $post)
+    @foreach($projects as $project)
     <tr>
-      <td>{{$post->title}}</td>
-      <td>{{$post->author}}</td>
-      <td>{{$post->category}}</td>
+      <td>{{$project->title}}</td>
+      <td>{{$project->author}}</td>
+      <td>{{$project->category}}</td>
+      <td><a href="{{ route("project.show", $project) }}">Visualizza</a></td>
     </tr>
     @endforeach
   </tbody>
