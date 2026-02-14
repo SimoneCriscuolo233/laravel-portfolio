@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 
@@ -26,5 +27,7 @@ Route::middleware(['auth', 'verified'])
         Route::get('/', [DashboardController::class, 'index'])->name('admin-dashboard');
         
         // Qui in futuro aggiungerai: Route::resource('projects', ProjectController::class);
-    });
+});
+
+Route::resource("posts", PostController::class);
 require __DIR__.'/auth.php';
