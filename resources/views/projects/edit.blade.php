@@ -1,9 +1,9 @@
 @extends("layouts.projects")
-@section("title", "Aggiungi un progetto")
+@section("title", "Modifica un progetto")
 @section("content")
 
 
-  <form action="{{ route("project.update",  $project) }}" method="POST">
+  <form action="{{ route("project.update", $project) }}" method="POST">
     @csrf
     @method('PUT')
     <div class="form-control mb-3 d-flex flex-column">
@@ -15,8 +15,15 @@
       <input type="text" name="author" id="author" value="{{ $project->author}}">
     </div>
     <div class="form-control mb-3 d-flex flex-column">
-      <label for="category">Categoria</label>
-      <input type="text" name="category" id="category" value="{{ $project->category }}">
+      <label for="type_id">Tipo</label>
+      <select name="type_id" id="type_id">
+        @foreach ($types as $type)
+          <option value="{{ $type->id }}" {{ $project->type_id == $type->id ? "selected" : ""}}>
+            {{ $type->name }}
+          </option>
+        @endforeach
+
+      </select>
     </div>
     <div class="form-control mb-3 d-flex flex-column">
       <label for="content">Contenuto</label>

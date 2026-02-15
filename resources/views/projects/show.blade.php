@@ -49,8 +49,11 @@
         </div>
 
         <small class="card-text">
-          {{$project->category}}
+          {{$project->type["name"]}}
+          <br>
+          {{$project->type["description"]}}
         </small>
+
         <section class="card-text">
           {{$project->content}}
         </section>

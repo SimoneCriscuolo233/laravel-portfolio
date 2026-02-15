@@ -21,19 +21,20 @@
           <tr>
             <td>{{$project->title}}</td>
             <td>{{$project->author}}</td>
-            <td>{{$project->category}}</td>
+            <td>{{$project->type['name']}}</td>
             <td><a href="{{ route("project.show", $project) }}" class="btn btn-primary">Visualizza</a></td>
             <td>
               <div class="d-flex p-2 gap-2">
                 <a class="btn btn-warning" href="{{ route('project.edit', $project) }}">Modifica</a>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                  data-bs-target="#delete-modal-{{ $project->id }}">
                   Elimina
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="delete-modal-{{ $project->id }}" data-bs-backdrop="static"
+                  data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
