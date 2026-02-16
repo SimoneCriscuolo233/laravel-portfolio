@@ -9,7 +9,7 @@
 
         <th>Titolo</th>
         <th>Autore</th>
-        <th>Categoria</th>
+        <th>Tipo</th>
         <th>&nbsp;</th>
         <th class="d-flex justify-content-end">
           <a class="btn btn-primary" href="{{ route('project.create')}}">Aggiungi Progetto</a>

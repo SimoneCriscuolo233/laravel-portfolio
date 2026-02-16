@@ -54,6 +54,22 @@
           {{$project->type["description"]}}
         </small>
 
+        <small class="card-text">
+          @if (count($project->technologies) > 0)
+            @foreach($project->technologies as $technology)
+              <span class="badge bg-dark">
+                {{$technology->name}}
+              </span>
+            @endforeach
+          @endif
+
+
+
+
+
+
+        </small>
+
         <section class="card-text">
           {{$project->content}}
         </section>

@@ -13,8 +13,8 @@ return new class extends Migration {
         Schema::table(
             'projects',
             function (Blueprint $table) {
-                $table->dropColumn("category");
-                $table->foreignId("type_id")->default(1)->constrained();
+                
+                $table->foreignId("type_id")->default(1)->constrained()->onDelete('cascade');
 
             }
         );

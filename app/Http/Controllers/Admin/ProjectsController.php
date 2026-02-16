@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class ProjectsController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view("projects.create", compact("types"));
+        $technologies = Technology::all();
+        return view("projects.create", compact("types", "technologies"));
     }
 
     /**
@@ -40,6 +42,12 @@ class ProjectsController extends Controller
         $newproject->type_id = $data["type_id"];
         $newproject->content = $data["content"];
         $newproject->save();
+        if ($request->has("techonologies")) {
+            $newproject->technologies()->attach($data['technologies']);
+        }
+
+
+
         return redirect()->route("project.show", $newproject);
     }
 
@@ -53,7 +61,8 @@ class ProjectsController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view("projects.edit", compact("project", "types"));
+        $technologies = Technology::all();
+        return view("projects.edit", compact("project", "types", "technologies"));
     }
 
     /**
@@ -67,14 +76,22 @@ class ProjectsController extends Controller
         $project->type_id = $data["type_id"];
         $project->content = $data["content"];
         $project->update();
+        if ($request->has("techonologies")) {
+            $project->technologies()->sync($data["technologies"]);
+
+        } else {
+            $project->technologies()->detach();
+        }
         return redirect()->route("project.show", $project);
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Project $project)
     {
+        $project->technologies()->detach();
         $project->delete();
         return redirect()->route("project.index");
     }

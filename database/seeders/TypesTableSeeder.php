@@ -12,7 +12,7 @@ class TypesTableSeeder extends Seeder
     public function run(Faker $faker)
     {
 
-        $types = ["Laravel", "Php", "Javascript", "React"];
+        $types = ["Ongoing", "Done", "Dropped"];
 
         foreach ($types as $type) {
 
